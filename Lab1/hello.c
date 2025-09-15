@@ -2,6 +2,6 @@
 
 int main() { // Main point of execution.
 
-    printf("Hello World!\n"); // Output "Hello World" to console.
+    printf("Hello World!"); // Output "Hello World" to console.
     return 0; // Tell OS the program terminates normally.
 }
