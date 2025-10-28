@@ -66,8 +66,15 @@ int main(int argc, char **argv)
         for (int i = 0; i < bitWidth; i++) 
         {
             m = (m << 1) | 1LL;
+            // 0...00000001 | 0...00000001
+            // 0...00000010 | 0...00000001 = 0...000000011
+            // ...
+            // 0...11111110 | 0...00000001 = 0...111111111
         }
-        long long low  = result & m; // all to 0, except right bandwidth-bits
+        long long low  = result & m; // all to 0, except right bitwidth-bits
+        // 0...000000FF & 0...00000003D = 0...0000003D
+        // 0...000000FF & F...FFFFFFF4D = 0...0000004D
+      
         long long sbit = (low >> (bitWidth - 1)) & 1LL; // sbit == 1: negative, 0: positive
 
         // ~m:   0xFFFFFFFFFFFFFF00
